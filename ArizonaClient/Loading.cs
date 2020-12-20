@@ -158,83 +158,71 @@ namespace ArizonaClient
 
         public void InstallUpdateSyncWithInfo()
         {
-            try
-            {
                 UpdateCheckInfo info = null;
 
-                if (ApplicationDeployment.IsNetworkDeployed)
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
+
+                try
                 {
-                    ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
+                    info = ad.CheckForDetailedUpdate();
+                    //MessageBox.Show("Последняя версия приложения: " + info.AvailableVersion.ToString());
+                }
+                catch (DeploymentDownloadException dde)
+                {
+                    MessageBox.Show("Невозможно установить новую версию приложения. \nОшибка: " + dde.Message);
+                    return;
+                }
+                catch (InvalidDeploymentException ide)
+                {
+                    MessageBox.Show("Невозможно обновить приложение из-за повреждения файла ClickOnce. \nОшибка: " + ide.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Неизвестная ошибка установки: " + e.Message);
+                    return;
+                }
+                if (info.UpdateAvailable)
+                {
+                    Boolean doUpdate = true;
 
-                    try
+                    if (!info.IsUpdateRequired)
                     {
-                        info = ad.CheckForDetailedUpdate();
-                        MessageBox.Show("Последняя версия приложения: " + info.AvailableVersion.ToString());
-                    }
-                    catch (DeploymentDownloadException dde)
-                    {
-                        MessageBox.Show("Невозможно установить новую версию приложения. \nОшибка: " + dde.Message);
-                        return;
-                    }
-                    catch (InvalidDeploymentException ide)
-                    {
-                        MessageBox.Show("Невозможно обновить приложение из-за повреждения файла ClickOnce. \nОшибка: " + ide.Message);
-                        return;
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show("Неизвестная ошибка установки:" + e.Message);
-                        return;
-                    }
-                    if (info.UpdateAvailable)
-                    {
-                        Boolean doUpdate = true;
-
-                        if (!info.IsUpdateRequired)
+                        DialogResult dr = MessageBox.Show("Доступно обновление. Вы хотите его загрузить?", "ArizonaClient", MessageBoxButtons.OKCancel);
+                        if (!(DialogResult.OK == dr))
                         {
-                            DialogResult dr = MessageBox.Show("Доступно обновление. Вы хотите его загрузить?", "ArizonaClient", MessageBoxButtons.OKCancel);
-                            if (!(DialogResult.OK == dr))
-                            {
-                                doUpdate = false;
-                            }
-                        }
-                        else
-                        {
-                            // Display a message that the app MUST reboot. Display the minimum required version.
-                            MessageBox.Show("Обновление установило различие между текущей и минимальной версией програмного обеспечения: " + info.MinimumRequiredVersion.ToString() +
-                                ". Обновление будет принудительно загружено и переустановлено",
-                                "ArizonaClient", MessageBoxButtons.OK);
-                        }
-
-                        if (doUpdate)
-                        {
-                            try
-                            {
-                                ad.Update();
-                                MessageBox.Show("Приложение успешно обновлено и будет перезапущено.");
-                                Application.Restart();
-                            }
-                            catch (DeploymentDownloadException dde)
-                            {
-                                MessageBox.Show("Не удалось установить новую версию програмного обеспечения. \nОшибка: " + dde);
-                                return;
-                            }
+                            doUpdate = false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Новых версий приложения не обнаружено");
+                        // Display a message that the app MUST reboot. Display the minimum required version.
+                        MessageBox.Show("Обновление установило различие между текущей и минимальной версией програмного обеспечения: " + info.MinimumRequiredVersion.ToString() +
+                            ". Обновление будет принудительно загружено и переустановлено",
+                            "ArizonaClient", MessageBoxButtons.OK);
+                    }
+
+                    if (doUpdate)
+                    {
+                        try
+                        {
+                            ad.Update();
+                            MessageBox.Show("Приложение успешно обновлено и будет перезапущено.");
+                            Application.Restart();
+                        }
+                        catch (DeploymentDownloadException dde)
+                        {
+                            MessageBox.Show("Не удалось установить новую версию програмного обеспечения. \nОшибка: " + dde);
+                            return;
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Приложение не является ClickOnce-приложением");
+                    MessageBox.Show("Новых версий приложения не обнаружено");
                 }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Неизвестная ошибка установки:" + e.Message);
-                return;
             }
         }
     }
