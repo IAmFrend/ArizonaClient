@@ -211,6 +211,7 @@ namespace ArizonaClient
                             {
                                 ad.Update();
                                 MessageBox.Show("Приложение успешно обновлено и будет перезапущено.");
+                                this.Close();
                                 Application.Restart();
                             }
                             catch (DeploymentDownloadException dde)
