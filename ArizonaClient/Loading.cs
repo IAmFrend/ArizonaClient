@@ -184,40 +184,48 @@ namespace ArizonaClient
                     MessageBox.Show("Неизвестная ошибка установки: " + e.Message);
                     return;
                 }
-                if (info.UpdateAvailable)
+                try
                 {
-                    Boolean doUpdate = true;
+                    if (info.UpdateAvailable)
+                    {
+                        Boolean doUpdate = true;
 
-                    if (!info.IsUpdateRequired)
-                    {
-                        DialogResult dr = MessageBox.Show("Доступно обновление. Вы хотите его загрузить?", "ArizonaClient", MessageBoxButtons.OKCancel);
-                        if (!(DialogResult.OK == dr))
+                        if (!info.IsUpdateRequired)
                         {
-                            doUpdate = false;
+                            DialogResult dr = MessageBox.Show("Доступно обновление. Вы хотите его загрузить?", "ArizonaClient", MessageBoxButtons.OKCancel);
+                            if (!(DialogResult.OK == dr))
+                            {
+                                doUpdate = false;
+                            }
                         }
-                    }
-                    else
-                    {
-                        // Display a message that the app MUST reboot. Display the minimum required version.
-                        MessageBox.Show("Обновление установило различие между текущей и минимальной версией програмного обеспечения: " + info.MinimumRequiredVersion.ToString() +
-                            ". Обновление будет принудительно загружено и переустановлено",
-                            "ArizonaClient", MessageBoxButtons.OK);
-                    }
+                        else
+                        {
+                            // Display a message that the app MUST reboot. Display the minimum required version.
+                            MessageBox.Show("Обновление установило различие между текущей и минимальной версией програмного обеспечения: " + info.MinimumRequiredVersion.ToString() +
+                                ". Обновление будет принудительно загружено и переустановлено",
+                                "ArizonaClient", MessageBoxButtons.OK);
+                        }
 
-                    if (doUpdate)
-                    {
-                        try
+                        if (doUpdate)
                         {
-                            ad.Update();
-                            MessageBox.Show("Приложение успешно обновлено и будет перезапущено.");
-                            Application.Restart();
-                        }
-                        catch (DeploymentDownloadException dde)
-                        {
-                            MessageBox.Show("Не удалось установить новую версию програмного обеспечения. \nОшибка: " + dde);
-                            return;
+                            try
+                            {
+                                ad.Update();
+                                MessageBox.Show("Приложение успешно обновлено и будет перезапущено.");
+                                Application.Restart();
+                            }
+                            catch (DeploymentDownloadException dde)
+                            {
+                                MessageBox.Show("Не удалось установить новую версию програмного обеспечения. \nОшибка: " + dde);
+                                return;
+                            }
                         }
                     }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Неизвестная ошибка: " + e.Message);
+                    return;
                 }
             }
         }
