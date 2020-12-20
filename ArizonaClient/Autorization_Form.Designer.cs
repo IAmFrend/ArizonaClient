@@ -54,7 +54,7 @@
             this.tbUserLogin.Location = new System.Drawing.Point(0, 31);
             this.tbUserLogin.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tbUserLogin.Name = "tbUserLogin";
-            this.tbUserLogin.Size = new System.Drawing.Size(418, 38);
+            this.tbUserLogin.Size = new System.Drawing.Size(425, 38);
             this.tbUserLogin.TabIndex = 2;
             // 
             // lblPassword
@@ -74,7 +74,7 @@
             this.tbUserPassword.Location = new System.Drawing.Point(0, 100);
             this.tbUserPassword.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tbUserPassword.Name = "tbUserPassword";
-            this.tbUserPassword.Size = new System.Drawing.Size(418, 38);
+            this.tbUserPassword.Size = new System.Drawing.Size(425, 38);
             this.tbUserPassword.TabIndex = 4;
             // 
             // btEnter
@@ -83,7 +83,7 @@
             this.btEnter.Location = new System.Drawing.Point(0, 138);
             this.btEnter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btEnter.Name = "btEnter";
-            this.btEnter.Size = new System.Drawing.Size(134, 31);
+            this.btEnter.Size = new System.Drawing.Size(134, 59);
             this.btEnter.TabIndex = 5;
             this.btEnter.Text = "Войти";
             this.btEnter.UseVisualStyleBackColor = true;
@@ -92,10 +92,10 @@
             // btClose
             // 
             this.btClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btClose.Location = new System.Drawing.Point(292, 138);
+            this.btClose.Location = new System.Drawing.Point(299, 138);
             this.btClose.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(126, 31);
+            this.btClose.Size = new System.Drawing.Size(126, 59);
             this.btClose.TabIndex = 6;
             this.btClose.Text = "Отмена";
             this.btClose.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@
             this.btReg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btReg.Location = new System.Drawing.Point(134, 138);
             this.btReg.Name = "btReg";
-            this.btReg.Size = new System.Drawing.Size(158, 31);
+            this.btReg.Size = new System.Drawing.Size(165, 59);
             this.btReg.TabIndex = 7;
             this.btReg.Text = "Регистрация";
             this.btReg.UseVisualStyleBackColor = true;
@@ -116,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 169);
+            this.ClientSize = new System.Drawing.Size(425, 197);
             this.Controls.Add(this.btReg);
             this.Controls.Add(this.btClose);
             this.Controls.Add(this.btEnter);
