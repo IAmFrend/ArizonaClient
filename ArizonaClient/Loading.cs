@@ -29,6 +29,8 @@ namespace ArizonaClient
             SystemCheck();
             if (Startup)
             {
+                Update_Class update = new Update_Class();
+                update.InstallUpdateSyncWithInfo();
                 InitializeComponent();
             }
             else
