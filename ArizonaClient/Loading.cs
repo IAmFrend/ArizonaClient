@@ -192,7 +192,7 @@ namespace ArizonaClient
 
                         if (!info.IsUpdateRequired)
                         {
-                            DialogResult dr = MessageBox.Show("Доступно обновление. Вы хотите его загрузить?", "ArizonaClient", MessageBoxButtons.OKCancel);
+                            DialogResult dr = MessageBox.Show("Доступно обновление. Новая версия: "+info.AvailableVersion.ToString()+". Вы хотите его загрузить?", "ArizonaClient", MessageBoxButtons.OKCancel);
                             if (!(DialogResult.OK == dr))
                             {
                                 doUpdate = false;
