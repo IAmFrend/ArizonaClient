@@ -220,10 +220,6 @@ namespace ArizonaClient
                         }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Новых версий приложения не обнаружено");
-                }
             }
         }
     }
