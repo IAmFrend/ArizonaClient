@@ -224,6 +224,10 @@ namespace ArizonaClient
                     MessageBox.Show("Новых версий приложения не обнуружено");
                 }
             }
+            else
+            {
+                MessageBox.Show("Приложение не является ClickOnce-приложением");
+            }
         }
     }
 }
