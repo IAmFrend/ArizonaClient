@@ -167,7 +167,6 @@ namespace ArizonaClient
                 try
                 {
                     info = ad.CheckForDetailedUpdate();
-                    //MessageBox.Show("Последняя версия приложения: " + info.AvailableVersion.ToString());
                 }
                 catch (DeploymentDownloadException dde)
                 {
