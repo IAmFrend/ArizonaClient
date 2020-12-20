@@ -184,7 +184,6 @@ namespace ArizonaClient
                     MessageBox.Show("Неизвестная ошибка установки: " + e.Message);
                     return;
                 }
-                MessageBox.Show("Последняя версия приложения: " + info.AvailableVersion.ToString());
                 if (info.UpdateAvailable)
                 {
                     Boolean doUpdate = true;
