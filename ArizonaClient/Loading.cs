@@ -183,7 +183,7 @@ namespace ArizonaClient
                     MessageBox.Show("Неизвестная ошибка установки:" + e.Message);
                     return;
                 }
-                MessageBox.Show("Последняя версия приложения" + info.AvailableVersion.ToString());
+                MessageBox.Show("Последняя версия приложения: " + info.AvailableVersion.ToString());
                 if (info.UpdateAvailable)
                 {
                     Boolean doUpdate = true;
@@ -221,7 +221,7 @@ namespace ArizonaClient
                 }
                 else
                 {
-                    MessageBox.Show("Новых версий приложения не обнуружено");
+                    MessageBox.Show("Новых версий приложения не обнаружено");
                 }
             }
             else
