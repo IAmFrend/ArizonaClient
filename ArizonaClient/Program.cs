@@ -26,6 +26,8 @@ namespace ArizonaClient
         [STAThread]
         static void Main()
         {
+            Update_Class update = new Update_Class();
+            update.InstallUpdateSyncWithInfo();
             //Проверка запущенного приложения
             bool Create_App;
             instanse = new Mutex(true, app_Name, out Create_App);

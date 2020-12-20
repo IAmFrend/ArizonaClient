@@ -30,7 +30,7 @@
     <SuiteName>Arizona</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -136,6 +136,7 @@
       <DependentUpon>Registration_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Table_Class.cs" />
+    <Compile Include="Update_Class.cs" />
     <EmbeddedResource Include="Autorization_Form.resx">
       <DependentUpon>Autorization_Form.cs</DependentUpon>
     </EmbeddedResource>
