@@ -123,7 +123,7 @@ namespace ArizonaClient
             memKb = memKb / 1024 / 1024;
             if (memKb < 4)
             {
-                MessageBox.Show(String.Format("Данное приложение не запустится с таким количеством памяти ОЗУ: {0} Гб", memKb.ToString()));
+                MessageBox.Show(String.Format("Данное приложение не может запустится с таким количеством памяти ОЗУ: {0} Гб", memKb.ToString()));
                 Startup = false;
             }
             if (IsConnectedToInternet() == false)
