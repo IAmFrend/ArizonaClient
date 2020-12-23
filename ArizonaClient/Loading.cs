@@ -216,7 +216,7 @@ namespace ArizonaClient
                             }
                             catch (DeploymentDownloadException dde)
                             {
-                                MessageBox.Show("Не удалось установить новую версию програмного обеспечения. \nОшибка: " + dde);
+                                MessageBox.Show("Не удалось установить версию програмного обеспечения. \nОшибка: " + dde);
                                 return;
                             }
                         }
