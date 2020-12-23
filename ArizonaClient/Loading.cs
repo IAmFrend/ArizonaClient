@@ -175,7 +175,7 @@ namespace ArizonaClient
                 }
                 catch (InvalidDeploymentException ide)
                 {
-                    MessageBox.Show("Невозможно обновить приложение из-за повреждения файла ClickOnce. \nОшибка: " + ide.Message);
+                    MessageBox.Show("Невозможно обновить приложение из-за повреждения файлов ClickOnce. \nОшибка: " + ide.Message);
                     return;
                 }
                 catch (Exception e)
